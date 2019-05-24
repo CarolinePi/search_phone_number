@@ -4,6 +4,7 @@ from main import SuffixTree
 
 @pytest.fixture(scope='module')
 def suffix():
+    """ Create object of Suffix Tree and fill it. """
     suffix = SuffixTree()
     numbers = ["380672832505",
                "380671232530",
@@ -31,6 +32,7 @@ def suffix():
 
 def test_quantity_results(suffix):
     """ Test checks number of results. """
+
     suffix.search('38067')
     assert len(suffix.numbers) == 10
     suffix.search('380672')
@@ -41,32 +43,30 @@ def test_quantity_results(suffix):
 
 def test_type_of_numbers(suffix):
     """ Test checks that numbers are str(int). """
+
     suffix.search('')
+    print(suffix.numbers)
     assert suffix.numbers == ["380672832505",
-                              "380671232530",
-                              "380675683254",
-                              "380672831230",
                               "380672832503",
-                              "380671323220",
+                              "380672831230",
                               "380672836400",
-                              "380675632234",
                               "380672823457",
+                              "380671232530",
+                              "380671323220",
                               "380671657650",
-                              "380674646346",
-                              "380536235324",
-                              "389675753463",
-                              "385634554553",
-                              "380534646532",
-                              "380436235353"]
+                              "380675683254",
+                              "380675632234"]
 
 
 def test_results(suffix):
     """ Test checks results. """
+
     suffix.search('380672')
     assert suffix.numbers == ["380672832505",
                               "380672832503",
                               "380672831230",
                               "380672836400",
                               "380672823457"]
+
 
 
